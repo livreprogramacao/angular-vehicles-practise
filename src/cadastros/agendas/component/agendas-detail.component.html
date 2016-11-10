@@ -1,0 +1,237 @@
+<!-- main content start -->
+<section id="main-content" class="relative">
+
+	<section class="wrapper">
+
+		<!-- page start-->
+		<div class="col-md-9 col-xs-9 col-sm-6 col-lg-8 ">
+			<div class="row">
+				<div class="col-md-12 ">
+					<!--breadcrumbs start -->
+					<ul class="breadcrumb margtop5 small">
+						<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+						<li>Cadastro</li>
+						<li class="">Agenda </li>
+						<li class="active">Incluir Agenda </li>
+					</ul>
+					<!--breadcrumbs end -->
+				</div>
+			</div>
+			<!--row end -->
+		</div>
+		<div class="col-md-3 col-xs-3 col-sm-6 col-lg-4 offset-0 none"></div>
+
+		<!-- Panel -->
+		<div class="panel panel-default filterable">
+			<!-- Panel estava aberto-->
+			<div>
+
+				<!-- Topo -->
+				<div class="panel-heading">
+					<i class="fa fa-plus lblue hidden-inline-xs"></i> Incluir Agenda
+				</div>
+				<!-- Fim Topo -->
+
+				<!-- panel-body -->
+				<div class="panel-body container-fluid offset-0">
+
+					<form class="form-horizontal bucket-form">
+
+						<div class="form-group ">
+
+							<div class="col-sm-12">
+								<label class="control-label">Unidade </label>
+								<input type="" name="" class="form-control" disabled="" value="Aclimação">
+							</div>
+
+							<div class="col-sm-6">
+								<label class="control-label"> Subárea </label>
+								<select id="subarea" name="subarea" [(ngModel)]="selectedAgenda.subarea.id" required #subarea="ngModel" class="form-control " placeholder="1">
+                                    <option> Selecione</option>
+                                    <option *ngFor="let subarea of subareas$ | async" [value]="subarea.id">{{ subarea.descricao }}</option>
+                                </select>
+								<div [hidden]="subarea.valid || subarea.pristine" class="alert alert-danger">
+									Subárea é obrigatorio
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<label class="control-label"> Serviço </label>
+								<select id="servico" name="servico" [(ngModel)]="selectedAgenda.servico.id" required #servico="ngModel" class="form-control " placeholder="1">
+                                    <option>Selecione</option> 
+                                    <option *ngFor="let servico of servicos" [value]="servico.id">{{ servico.titulo }}</option>
+                                </select>
+								<div [hidden]="servico.valid || servico.pristine" class="alert alert-danger">
+									Serviço é obrigatorio
+								</div>
+							</div>
+
+						</div>
+
+					</form>
+
+					<div class="clearfix"></div>
+					<div class="line2"></div>
+
+					<label class="col-sm-12 control-label">Tipo de Agenda:</label>
+
+					<div class="form-group">
+
+						<div class="col-sm-6" id="accordion" role="tablist" aria-multiselectable="true">
+
+							<div class="checkbox">
+								<label>
+									<input type="radio" name="tipoAgenda" value="Individual" (click)="clearDatasHoras()" [(ngModel)]="selectedAgenda.tipoAgenda" />
+									Individual 
+							    </label>
+							</div>
+
+							<div class="checkbox">
+								<label>
+									<input type="radio" name="tipoAgenda" value="Pacote" (click)="clearDatasHoras()" [(ngModel)]="selectedAgenda.tipoAgenda" />
+									Pacote 
+								</label>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="clearfix"></div>
+					<div class="line2"></div>
+
+					<div *ngIf="selectedAgenda.tipoAgenda != undefined">
+
+						<div class="bold  blue col-md-12 size14">Agenda {{ selectedAgenda.tipoAgenda }}:</div>
+						<div class="clearfix"></div>
+						<div class="line2"></div>
+
+						<div class="form-group ">
+							<div class="col-md-3 col-lg-3 col-xs-12 col-sm-3">
+								<label class="control-label">Data </label>
+								<input type="date" min="{{ hoje }}" class="form-control" id="data" name="data" [(ngModel)]="newDataHora.data" />
+							</div>
+							<div class="col-md-3 col-lg-3 col-xs-4 col-sm-3">
+								<label class="control-label">Horário</label>
+								<input type="time" class="form-control" id="hora" name="hora" [(ngModel)]="newDataHora.hora" />
+							</div>
+							<div class="col-md-3 col-lg-3 col-xs-4 col-sm-3">
+								<label class="control-label">Número de Vagas</label>
+								<input type="number" value="1" min="1" class="form-control" id="quantidadeVaga" name="quantidadeVaga" [(ngModel)]="newDataHora.quantidadeVaga" />
+							</div>
+							<div class="col-md-3 col-lg-3 col-xs-4 col-sm-3">
+								<label class="control-label">Vagas em espera</label>
+								<input type="number" value="1" min="1" class="form-control" id="quantidadeEspera" name="quantidadeEspera" [(ngModel)]="newDataHora.quantidadeEspera" />
+							</div>
+							<div class="col-sm-12 mt-5">
+								<button (click)="incluirDataHora()" type="button" class="btn bluebtn btn-primary margtop20  right btn-xs "><i class="fa fa-plus"></i>Incluir</button>
+								<div *ngIf="selectedAgenda.tipoAgenda == 'Pacote'">
+									<button (click)="definirPacote()" type="button" class="btn bluebtn btn-primary margtop20 right btn-xs margright20"><i class="fa fa-file"></i> Definir Pacote</button>
+								</div>
+							</div>
+						</div>
+
+
+						<div *ngIf="datasHoras.length > 0" class="col-sm-12">
+
+							<div class="bold  blue col-md-12 size14"><span class="todo-count"><strong>{{ datasHoras.length }}</strong> {{ datasHoras.length == 1 ? 'horario incluido' : 'horarios incluidos' }} na agenda</span></div>
+							<div class="clearfix"></div>
+
+							<div class="table-responsive mt10">
+
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<tr class="filters">
+											<th *ngIf="selectedAgenda.tipoAgenda == 'Pacote'" class="small">Pacote</th>
+											<th class="small">Data</th>
+											<th class="small">Início</th>
+											<th class="small center">Vagas</th>
+											<th class="small center">Espera</th>
+											<th class="small center">Excluir</th>
+											<th class="small center">Editar</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let dh of datasHoras">
+											<td *ngIf="selectedAgenda.tipoAgenda == 'Pacote'">{{ dh.numeroPacoteData }}</td>
+											<td class="titulo_table">{{  dh.dataHora | date:"dd/MM/yyyy" }}</td>
+											<td class="">{{ dh.hora }}</td>
+											<td class="center">{{ dh.quantidadeVaga }}</td>
+											<td class="center">{{ dh.quantidadeEspera }}</td>
+											<td class="center">
+												<a (click)="excluirDataHora(dh)" title="" class="tooltips btn btn-default btn-xs" data-placement="left" data-original-title="Excluir">
+													<i class="fa fa-remove red size14"></i>
+												</a>
+											</td>
+											<td class="center">
+												<a (click)="editarDataHora(dh)" title="" class="tooltips btn btn-default btn-xs" data-placement="left" data-original-title="Editar">
+													<i class="fa fa-pencil lblue size14"></i>
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+
+						<div class="clearfix"></div>
+						<div class="line2"></div>
+
+						<div class="col-md-12 offset-0 degrade padding10">
+							<div class="col-md-3  offset-0">
+								<div class="col-md-12 bold blue">Publicar:</div>
+
+								<div class="col-md-12">
+									<div class="checkbox">
+										<label>
+											<input type="radio" name="publicar" value="true" checked="true" id="switch-create-destroy" #agora (click)="publicar = agora.value" />
+											Agora
+										</label>
+									</div>
+
+									<div class="checkbox">
+										<label>
+											<input type="radio" name="publicar" value="false" #agendar (click)="publicar = agendar.value" />
+											Agendar Publicação
+									    </label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<label class="control-label">Selecionar a Data:</label>
+								<input type="date" min="{{ hoje }}" class="form-control" size="16" id="dataPublicacao" name="dataPublicacao" [(ngModel)]="selectedAgenda.data" [disabled]="publicar == 'true'" />
+							</div>
+
+							<div class="col-sm-3">
+								<label class="control-label">Hora:</label>
+								<input type="time" class="form-control" size="16" id="horaPublicacao" name="horaPublicacao" [(ngModel)]="selectedAgenda.hora" [disabled]="publicar == 'true'" />
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+				<!-- /.panel -->
+
+				<!-- panel-footer -->
+				<div *ngIf="selectedAgenda.tipoAgenda != undefined" class="panel-footer">
+					<button (click)="create()" type="button" class="btn bluebtn btn-primary btn-xs right"><i class="fa fa-save"></i>Salvar</button>
+					<button (click)="cancel()" type="button" class="btn btn-default btn-xs padding5"><i class="fa fa-remove"></i>Cancelar</button>
+				</div>
+				<!-- /.panel-footer -->
+
+			</div>
+			<!-- /.col-lg-12 -->
+
+		</div>
+		<!-- / row -->
+
+	</section>
+	<!-- / section wrapper -->
+
+</section>
+<!-- end main-content-->

@@ -1,0 +1,169 @@
+<!--main content start-->
+<section id="main-content" class="relative">
+    <section class="wrapper">
+
+        <!-- page start-->
+        <div class="col-md-9 col-xs-9 col-sm-6 col-lg-8 ">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <!--breadcrumbs start -->
+                    <ul class="breadcrumb margtop5 small">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li>Cadastro</li>
+                        <li class="active">Usuário </li>
+                    </ul>
+                    <!--breadcrumbs end -->
+                </div>
+            </div>
+            <!--row end -->
+        </div>
+        <div class="col-md-3 col-xs-3 col-sm-6 col-lg-4 offset-0">
+            <button type="button" class="btn btn-primary bluebtn right  " data-toggle="collapse" data-target="#collapseBusca" aria-expanded="false"
+                aria-controls="collapseExample"><i class="fa fa-filter"></i> <div class="hidden-inline-xs">Filtro</div> 
+    </button>
+        </div>
+
+        <!-- page start-->
+        <div class="clearfix"> </div>
+
+        <div class="collapse" id="collapseBusca">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel  panel-default ">
+                        <div class="panel-body busca_avancada">
+                            <div class="col-md-12 offset-0 margbottom10">
+                                <div class="col-md-5 col-xs-12 col-sm-5 col-lg-5">
+                                    <div class="form-group">
+                                        <label class="control-label"> Nome </label>
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-12 offset-0">
+                                            <input class="form-control input-sm" type="text" required="" placeholder="Chamada">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="control-label"> Perfil </label>
+                                        <div class="clearfix"></div>
+                                        <select class="form-control " placeholder="1">
+                            <option> Selecione</option>
+                            <option> Perfil 1</option>
+                            <option> Perfil 2</option>
+                          </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-3 col-xs-12 col-sm-3 col-lg-3 ">
+                                    <button type="button" class="btn btn-primary bluebtn margtop20  " data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+                                        aria-controls="collapseExample"><i class="fa fa-search"></i> Buscar </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Panel -->
+                <div class="panel panel-default filterable">
+                    <!-- Topo -->
+                    <div class="panel-heading">
+                        <i class="fa fa-user hidden-inline-xs"></i> Usuário
+                        <div class="pull-right">
+                            <a href="usuario_bemestar_incluir.html">
+                                <button class="btn btn-default  btn-xs bluebtn tooltips" type="button" title="" data-placement="left" data-toggle="tooltip"
+                                    data-original-title="Incluir">  
+                  <i class="fa fa-plus"></i>     
+                </button>
+                            </a>
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- Fim Topo -->
+
+                    <!-- panel-body -->
+                    <div class="panel-body container-fluid offset-0">
+                        <!-- table responsive -->
+                        <div class="table-responsive mt-6">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr class="filters">
+                                        <th class="small">
+                                            Nome
+                                        </th>
+                                        <th class="small">
+                                            Perfil
+                                        </th>
+                                        <th class="small center">
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="titulo_table">Edson Barboza</td>
+                                        <td class="descricao_table">Administrador</td>
+                                        <td class="center"><input id="switch-size" type="checkbox" class="left" checked="" data-size="mini">
+                                        </td>
+                                        <td class="center">
+                                            <a href="usuario_bemestar_editar.html" title="Editar" class="tooltips btn btn-default btn-xs" data-placement="left" data-original-title="Editar">
+                                                <i class="fa fa-pencil lblue size14"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="titulo_table">Bruno Bucci</td>
+                                        <td class="descricao_table">Vizualização</td>
+                                        <td class="center"><input id="switch-size" type="checkbox" class="left" checked="" data-size="mini">
+                                        </td>
+                                        <td class="center">
+                                            <a href="usuario_bemestar_editar.html" title="Editar" class="tooltips btn btn-default btn-xs" data-placement="left" data-original-title="Editar">
+                                                <i class="fa fa-pencil lblue size14"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- / table responsive -->
+                        <!--  paginacao -->
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li><a href="#">«</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </div>
+                        <!-- / paginacao -->
+                    </div>
+                    <!-- /.panel-body -->
+                    <!-- panel-footer -->
+                    <div class="panel-footer none">
+                        <button type="button" class="btn2 btn-primary btn-lg"><i class="fa fa-save"></i> Salvar</button>
+                        <button type="button" class="btn2 btn-primary btn-lg"><i class="fa fa-remove"></i> Cancelar</button>
+                    </div>
+                    <!-- /.panel-footer -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- / row -->
+
+    </section>
+    <!-- / section wrapper -->
+</section>

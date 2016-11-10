@@ -1,0 +1,126 @@
+<div *ngIf="selectedServico">
+	<!-- main content start -->
+	<section id="main-content" class="relative">
+		<section class="wrapper">
+			<!-- page start-->
+			<div class="col-md-9 col-xs-9 col-sm-6 col-lg-8 ">
+				<div class="row">
+					<div class="col-md-12 ">
+						<!--breadcrumbs start -->
+						<ul class="breadcrumb margtop5 small">
+							<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+							<li>Cadastro</li>
+							<li>Serviço </li>
+							<li class="active">{{operacao}} Serviço </li>
+						</ul>
+						<!--breadcrumbs end -->
+					</div>
+				</div>
+				<!--row end -->
+			</div>
+			<div class="col-md-3 col-xs-3 col-sm-6 col-lg-4 offset-0 none">
+			</div>
+			<!-- page start-->
+			<div class="clearfix"></div>
+			<div>
+				<!-- Panel -->
+				<div class="panel panel-default filterable">
+					<!-- Topo -->
+					<div class="panel-heading">
+						<i class="fa fa-plus lblue hidden-inline-xs"></i>{{operacao}} Serviço
+					</div>
+					<!-- Fim Topo -->
+					<!-- panel-body -->
+					<div class="panel-body container-fluid offset-0">
+						<form *ngIf="active" (ngSubmit)="onSubmit()" #servicoForm="ngForm" class="form-horizontal bucket-form">
+							<div class="form-group ">
+								<div class="col-sm-6">
+									<label for="subarea" class="control-label">Subárea </label>
+									<select id="subarea" name="subarea" [(ngModel)]="selectedServico.subarea.id" required #subarea="ngModel" class="form-control " placeholder="1">
+										<option value="">Selecione</option>
+										<option *ngFor="let subarea of subareas$ | async" [value]="subarea.id">{{subarea.descricao}}</option>
+									</select>
+									<div [hidden]="subarea.valid || subarea.pristine" class="alert alert-danger">
+										Subárea é obrigatorio
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<label for="titulo" class="control-label">Título do Serviço</label>
+									<input id="titulo" name="titulo" [(ngModel)]="selectedServico.titulo" required #titulo="ngModel" type="text" class="form-control">
+									<div [hidden]="titulo.valid || titulo.pristine" class="alert alert-danger">
+										Título do Serviço é obrigatorio
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="form-group ">
+							<div class="col-sm-12 margbottom10">
+								<label for="descricao" class=" control-label">Descrição: <small>(800 caracteres)</small></label>
+								<textarea id="descricao" name="descricao" [(ngModel)]="selectedServico.descricao" required #descricao="ngModel" class="form-control" rows="4"></textarea>
+								<div [hidden]="descricao.valid || descricao.pristine" class="alert alert-danger">
+									Descrição é obrigatorio
+								</div>
+							</div>
+							<div class="col-sm-12 margbottom10">
+								<label for="prerequisito" class="control-label">Pré requisito</label>
+								<input id="prerequisito" name="prerequisito" [(ngModel)]="selectedServico.prerequisito" required #prerequisito="ngModel" type="text" class="form-control">
+								<div [hidden]="prerequisito.valid || prerequisito.pristine" class="alert alert-danger">
+									Pré requisito é obrigatorio
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="line2"></div>
+							<div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+								<label for="carencia" class="control-label">Carência</label>
+								<input id="carencia" name="carencia" [(ngModel)]="selectedServico.carencia" required #carencia="ngModel" type="number" class="form-control"><span class="help-block">Dias</span>
+								<div [hidden]="carencia.valid || carencia.pristine" class="alert alert-danger">
+									Carência é obrigatorio
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+								<label for="cancelamento" class="control-label">Prazo para cancelamento</label>
+								<input id="cancelamento" name="cancelamento" [(ngModel)]="selectedServico.cancelamento"  required #cancelamento="ngModel" type="number"class="form-control"><span class="help-block">Dias</span>
+								<div [hidden]="cancelamento.valid || cancelamento.pristine" class="alert alert-danger">
+									Prazo para cancelamento é obrigatorio
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+								<label for="penalidade" class="control-label">Penalidade por falta</label>
+								<input id="penalidade" name="penalidade" [(ngModel)]="selectedServico.penalidade" required #penalidade="ngModel" type="number" class="form-control"><span class="help-block">Dias</span>
+								<div [hidden]="penalidade.valid || penalidade.pristine" class="alert alert-danger">
+									Penalidade por falta é obrigatorio
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="line2"></div>
+						</div>
+						<div class="form-group ">
+							<div class="col-sm-12 margbottom10">
+								<label for="instrucao" class=" control-label">Instruções:</label>
+								<textarea id="instrucao" name="instrucao" [(ngModel)]="selectedServico.instrucao" required #instrucao="ngModel" class="form-control" rows="5"></textarea>
+								<div [hidden]="instrucao.valid || instrucao.pristine" class="alert alert-danger">
+									Instruções é obrigatorio
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.panel-body -->
+					<!-- panel-footer -->
+					<div class="panel-footer">
+						<div *ngIf="operacao == 'Editar'">
+							<button (click)="update()" type="button" class="btn bluebtn btn-primary btn-xs right"><i class="fa fa-save"></i>Salvar</button>
+						</div>
+						<div *ngIf="operacao == 'Incluir'">
+							<button (click)="create()" type="button" class="btn bluebtn btn-primary btn-xs right"><i class="fa fa-save"></i>Salvar</button>
+						</div>
+						<button (click)="cancel()" type="button" class="btn btn-default btn-xs padding5"><i class="fa fa-remove"></i>Cancelar</button>
+					</div>
+					<!-- /.panel-footer -->
+				</div>
+				<!-- /.panel -->
+			</div>
+		</section>
+		<!-- / section wrapper -->
+	</section>
+	<!-- end main-content-->
+</div>

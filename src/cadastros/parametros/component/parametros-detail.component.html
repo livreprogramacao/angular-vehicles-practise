@@ -1,0 +1,83 @@
+<div>
+    <!-- main content start -->
+    <section id="main-content" class="relative">
+        <section class="wrapper">
+            <!-- page start-->
+            <div class="col-md-9 col-xs-9 col-sm-6 col-lg-8 ">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <!--breadcrumbs start -->
+                        <ul class="breadcrumb margtop5 small">
+                            <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                            <li>Cadastro</li>
+                            <li>Parâmetro </li>
+                            <li class="active">{{operacao}} Parâmetro </li>
+                        </ul>
+                        <!--breadcrumbs end -->
+                    </div>
+                </div>
+                <!--row end -->
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-6 col-lg-4 offset-0 none">
+            </div>
+            <!-- page start-->
+            <div class="clearfix"></div>
+            <div>
+                <!-- Panel -->
+                <div class="panel panel-default filterable">
+                    <!-- Topo -->
+                    <div class="panel-heading">
+                        <i class="fa fa-plus lblue hidden-inline-xs"></i>{{operacao}} Parâmetro
+                    </div>
+                    <!-- Fim Topo -->
+                    <!-- panel-body -->
+                    <div class="panel-body container-fluid offset-0">
+                        <form *ngIf="active && selectedParametro" (ngSubmit)="onSubmit()" #resourceForm="ngForm" class="form-horizontal bucket-form">
+                            <div class="form-group ">
+                                <div class="col-sm-12 margbottom10">
+                                    <label for="chave" class="control-label">Chave</label>
+                                    <input id="chave" name="chave" [(ngModel)]="selectedParametro.chave" required #chave="ngModel"
+                                        type="text" class="form-control">
+                                    <div [hidden]="chave.valid || chave.pristine" class="alert alert-danger">
+                                        Chave é um campo obrigatorio
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 margbottom10">
+                                    <label for="valor" class=" control-label">Valor: <small>(800 caracteres)</small></label>
+                                    <textarea id="valor" name="valor" [(ngModel)]="selectedParametro.valor" required #valor="ngModel" class="form-control"
+                                        rows="5"></textarea>
+                                    <div [hidden]="valor.valid || valor.pristine" class="alert alert-danger">
+                                        Instruções é um campo obrigatorio
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="line2"></div>
+                                <div class="col-sm-12 margbottom10">
+                                    <label for="descricao" class=" control-label">Descrição:</label>
+                                    <textarea id="descricao" name="descricao" [(ngModel)]="selectedParametro.descricao" #descricao="ngModel" class="form-control"
+                                        rows="4"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.panel-body -->
+                    <!-- panel-footer -->
+                    <div class="panel-footer">
+                        <div *ngIf="operacao == 'Editar'">
+                            <button (click)="update()" type="button" class="btn bluebtn btn-primary btn-xs right"><i class="fa fa-save"></i>Salvar</button>
+                        </div>
+                        <div *ngIf="operacao == 'Incluir'">
+                            <button (click)="create()" type="button" class="btn bluebtn btn-primary btn-xs right"><i class="fa fa-save"></i>Salvar</button>
+                        </div>
+                        <button (click)="cancel()" type="button" class="btn btn-default btn-xs padding5"><i class="fa fa-remove"></i>Cancelar</button>
+                    </div>
+                    <!-- /.panel-footer -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </section>
+        <!-- / section wrapper -->
+    </section>
+    <!-- end main-content-->
+</div>

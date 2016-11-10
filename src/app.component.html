@@ -1,0 +1,118 @@
+<section id="container">
+	<!--header start-->
+	<header class="header fixed-top clearfix">
+		<!--logo start-->
+		<div class="brand">
+			<!--logo start-->
+			<a href="/" class="navbar-brand logo"><img src="resources/img/logo.png" alt=""></a>
+			<!--logo end-->
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars"></div>
+			</div>
+		</div>
+		<!--logo end-->
+		<div class="nav notify-row" id="top_menu">
+			<!--  notification start -->
+			<span class="dark"> <i class="fa fa-desktop"></i> <b> Bem Estar </b> <br> <small>Funcionalidades Admin</small>  
+			</span>
+		</div>
+		<div class="top-nav clearfix">
+			<ul class="nav pull-right top-menu">
+				<!-- user login dropdown start-->
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle user_bemestar" href="#">
+					<span class="username">Nome Usuário</span>
+					<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu extended logout">
+						<li><a href="#"><i class=" fa fa-suitcase"></i>Perfil</a></li>
+						<!--<li><a href="configuracao_profile.html"><i class="fa fa-cog"></i> Configurações</a></li>-->
+						<li><a href="login.html"><i class="fa fa-key"></i> Sair</a></li>
+					</ul>
+				</li>
+				<!-- user login dropdown end -->
+			</ul>
+		</div>
+	</header>
+	<!--header end-->
+
+    <!--Menu Principal -->
+	<aside>
+		<div id="sidebar" class="nav-collapse">
+			<!-- sidebar menu start-->           
+			<div class="leftside-navigation" tabindex="5000">
+				<ul class="sidebar-menu " id="nav-accordion">
+					<li class="sub-menu dcjq-parent-li">
+						<a class="dcjq-parent active">  
+                            <i class="fa fa-pencil-square-o"></i>
+                            <span>Cadastros</span>
+                            <span class="dcjq-icon"></span>
+                        </a>
+						<ul class="sub" style="">
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/usuarios" class="dcjq-parent ">
+								<i class="fa fa-user"></i>
+								<span>Usuário</span>
+								</a>
+							</li>
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/parametros" class="dcjq-parent ">
+								<i class="fa fa-puzzle-piece"></i>
+								<span>Parâmetros</span>
+								</a>
+							</li>
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/agendas" class="dcjq-parent ">
+								<i class="fa fa-calendar"></i>
+								<span>Agenda</span>
+								</a>
+							</li>
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/servicos" class="dcjq-parent active">
+								<i class="fa fa-files-o"></i>
+								<span>Serviço</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu dcjq-parent-li">
+						<a href="javascript:;" class="dcjq-parent s">
+						    <i class="fa fa-file-text-o"></i>
+						    <span>Relatórios</span>
+						    <span class="dcjq-icon"></span>
+                        </a>
+						<ul class="sub" style="">
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/modelosinscritos" class="dcjq-parent ">
+								    <i class="fa fa-tasks"></i>
+								    <span>Modelos Inscritos</span>
+								</a>
+							</li>
+							<li class="sub-menu dcjq-parent-li ">
+								<a href="/historicosinscricoes" class="dcjq-parent ">
+                                    <i class="fa fa-retweet"></i>
+                                    <span> Histórico de Inscrições</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu dcjq-parent-li">
+						<a href="/registrospresenca" class="dcjq-parent ">
+                            <i class="fa fa-clipboard"></i>
+                            <span>Registro de presença</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- sidebar menu end-->
+		</div>
+	</aside>
+	<!-- Fim Menu Principal -->
+
+    
+	<!-- Routed views go here -->
+	<router-outlet></router-outlet>
+	<!-- / Routed views go here -->
+
+</section>
+<!--end section container-->
