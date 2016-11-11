@@ -1,0 +1,18 @@
+http://stackoverflow.com/tags
+http://stackoverflow.com/questions/tagged/angular-cli?sort=frequent&pageSize=15
+http://stackoverflow.com/questions/40443217/debug-with-visual-studio-code-not-working
+http://stackoverflow.com/questions/38796541/how-to-add-font-awesome-to-angular-2-cli-project
+http://stackoverflow.com/questions/37137521/what-happens-when-you-run-ng-serve
+http://stackoverflow.com/questions/38734708/make-angular2-works-with-restrictive-content-security-policy-csp
+http://stackoverflow.com/questions/37631098/angular-2-how-to-bundle-for-production - Angular 2 - How to bundle for production
+http://stackoverflow.com/questions/37611549/how-to-pass-parameters-rendered-from-backend-to-angular2-bootstrap-method
+http://stackoverflow.com/questions/38718690/huge-number-of-files-generated-for-every-angularjs-2-project
+http://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular2
+
+deploy
+https://coryrylan.com/blog/deploy-angular-2-cli-apps-to-firebase
+https://medium.com/@satish1v/publish-angular-2-app-to-production-in-5-mins-3320afaa5ab7#.jx70ns8yw
+http://developer.telerik.com/featured/quick-angular-2-hosting-angular-cli-github-pages/
+http://stackoverflow.com/questions/40012905/how-to-deploy-angular-2-with-typescript-in-jboss-server
+http://stackoverflow.com/questions/21018656/how-can-i-deploy-a-war-file-to-a-subdirectory-of-my-jboss-server
+http://stackoverflow.com/questions/18873063/change-the-root-context-to-other-folder-in-tomcat-6/18926880#18926880
