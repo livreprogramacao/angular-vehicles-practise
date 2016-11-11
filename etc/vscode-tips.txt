@@ -1,0 +1,7 @@
+Node.js Applications with VS Code
+http://code.visualstudio.com/docs/runtimes/nodejs
+
+
+Start Debugging
+http://code.visualstudio.com/docs/editor/debugging#_launch-configurations
+
