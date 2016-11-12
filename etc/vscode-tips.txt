@@ -5,3 +5,6 @@ http://code.visualstudio.com/docs/runtimes/nodejs
 Start Debugging
 http://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
+Follow this steps to debug & run from VS code
+http://stackoverflow.com/questions/36494938/debug-run-angular2-typescript-with-visual-studio-code
+
